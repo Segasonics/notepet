@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { NoteContext } from '../context/NoteState'
 
 
-const AddNotes = () => {
+const AddNotes = ({isValid}) => {
     const {createNote}=useContext(NoteContext)
      const[note,setNote]=useState({
         title:"",description:"",
@@ -12,6 +12,9 @@ const AddNotes = () => {
      const[image,setImage]=useState(null)
 
      const handleSubmit=(e)=>{
+        if(isValid===false){
+            alert("Login or signup to add a note")
+        }
           e.preventDefault()
           const formData =new FormData();
           formData.append("title",note.title)
@@ -44,13 +47,13 @@ const AddNotes = () => {
         <div className='mb-3'>
             <label className='text-left block mb-2 text-sm font-medium text-gray-900 dark:text-white' >
                 Title :
-                <input className='border-2 mt-4 w-full rounded-md py-1.5 placeholder:text-gray-400 sm:text-sm p-10' type='text' name='title' value={note.title} onChange={(e) => handleOnChange(e)} placeholder='Title...' />
+                <input className='border-2 mt-4 w-full rounded-md py-1.5 placeholder:text-gray-400 sm:text-sm p-10 text-black' type='text' name='title' value={note.title} onChange={(e) => handleOnChange(e)} placeholder='Title...' />
             </label>
         </div>
         <div className='mb-3'>
             <label className='block mb-2 text-sm font-medium dark:text-white text-left'>
                 Description :
-                <textarea rows={4} cols={50} className=' w-full border-2 rounded-md py-1.5 placeholder:text-gray-400 sm:text-sm p-10' type='text' name='description' value={note.description} onChange={(e) => handleOnChange(e)} placeholder='Description...' />
+                <textarea rows={4} cols={50} className=' text-black w-full border-2 rounded-md py-1.5 placeholder:text-gray-400 sm:text-sm p-10' type='text' name='description' value={note.description} onChange={(e) => handleOnChange(e)} placeholder='Description...' />
             </label>
         </div>
         <div className="mb-3">

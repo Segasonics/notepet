@@ -8,7 +8,7 @@ import axios from 'axios';
 import { NoteContext } from '../context/NoteState';
 import Notes from './Notes';
 
-const Home = () => {
+const Home = ({isValid}) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleSideBar = () => {
     console.log("Sidebar toggled")
@@ -59,7 +59,7 @@ const Home = () => {
           </h1>
 
           <div>
-            <AddNotes isOpen={isOpen} />
+            <AddNotes isValid={isValid} isOpen={isOpen} />
             <Notes />
           </div>
         </div>

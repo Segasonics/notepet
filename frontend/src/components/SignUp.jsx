@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SignUp = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const url ="https://noteend.onrender.com/api/v1/users/login"
+    //const url="http://localhost:8000"
+
 
     const [credentials, setCredentials] = useState({
         username: "", email: "", password: ""
@@ -13,7 +16,7 @@ const SignUp = () => {
     const handleSubmit=async(event)=>{
         event.preventDefault()
         try {
-            const { data } = await axios.post("https://noteend.onrender.com/api/v1/users/register",
+            const { data } = await axios.post(`${url}`,
                 {
                     username: credentials.username,
                     email: credentials.email,

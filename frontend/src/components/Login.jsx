@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({isValid,isValidFunc}) => {
     const [credentials, setCredentials] = useState({
         username: "", email: "", password: ""
     })
     const navigate = useNavigate();
-    
+    const url ="https://noteend.onrender.com/api/v1/users/login"
+    //const url="http://localhost:8000/api/v1/users/login"
 
     const handleOnChange = (event) => {
         const { name, value } = event.target;
@@ -25,7 +26,7 @@ const Login = () => {
         //https://noteend.onrender.com
         e.preventDefault();
         try {
-            const {data}=await axios.post("https://noteend.onrender.com/api/v1/users/login",{
+            const {data}=await axios.post(`${url}`,{
                 username:credentials.username,email:credentials.email,password:credentials.password
             },{
                headers:{
@@ -36,6 +37,7 @@ const Login = () => {
             console.log(data)
             if (data.success) {
                 navigate("/");
+                isValidFunc(!isValid)
             }
         } catch (error) {
             console.error('Error during registration:', error.response ? error.response.data : error.message);
@@ -54,7 +56,7 @@ const Login = () => {
                 <div className='mb-3'>
                     <label className='block mb-2 text-sm font-medium dark:text-white'>
                         Email :
-                        <input autoComplete='current-email' className='block w-full border-2 rounded-md py-1.5 placeholder:text-gray-400 sm:text-sm p-10' type='email' name='email' value={credentials.email} onChange={(e) => handleOnChange(e)} placeholder='Enter your email...' />
+                        <input autoComplete='current-email' className='text-black block w-full border-2 rounded-md py-1.5 placeholder:text-gray-400 sm:text-sm p-10' type='email' name='email' value={credentials.email} onChange={(e) => handleOnChange(e)} placeholder='Enter your email...' />
                     </label>
                 </div>
                 <div className="mb-3">

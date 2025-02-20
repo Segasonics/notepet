@@ -13,6 +13,8 @@ const Notes = () => {
   const[noteToEdit,setNoteToEdit]=useState(null)
   const { notes ,deleteNote,fetchallNotes} = useContext(NoteContext);
 
+  console.log(notes)
+
   const breakpointObj ={
     default:4,
     3000:5,
@@ -20,11 +22,7 @@ const Notes = () => {
     1200:3,
     1000:2,
     500:1,
-}
-
-  useEffect(()=>{
-     fetchallNotes()
-  },[])
+  }
 
   const handleClick=()=>{
     setIsEditing(true)
@@ -39,7 +37,7 @@ const Notes = () => {
   return (
     <>
     <div className='flex justify-between m-8'>
-      <h2 className="text-5xl text-center mt-5">Your notes</h2>
+      <h2 className="md:text-5xl text-3xl mt-8 text-center md:mt-5">Your notes</h2>
       <Link to="/" className="text-3xl text-center flex mt-10"><FaArrowLeft /><span className='text-lg'>Home</span></Link>
     </div>
     <div className='flex mt-4 w-full p-6'>

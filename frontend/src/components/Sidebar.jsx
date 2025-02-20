@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ isOpen, toggleSideBar }) => {
   return (
@@ -18,19 +19,19 @@ const Sidebar = ({ isOpen, toggleSideBar }) => {
           <h2 className="text-2xl font-semibold">Notepad</h2>
         </div>
         <nav className="mt-5">
-          <a href="/" className="block py-2.5 px-4 rounded hover:bg-gray-700 hover:text-white text-gray-100 text-2xl">
+          <Link to="/" className="block py-2.5 px-4 rounded hover:bg-gray-700 hover:text-white text-gray-100 text-2xl">
             Home
-          </a>         
+          </Link>         
         </nav>
         <nav className="mt-0">
-          <a href="/notes" className="block py-2.5 px-4 rounded hover:bg-gray-700 hover:text-white text-gray-100 text-2xl">
+          <Link to="/notes" className="block py-2.5 px-4 rounded hover:bg-gray-700 hover:text-white text-gray-100 text-2xl">
             Notes
-          </a>         
+          </Link>         
         </nav>
         <nav className="w-full">
-          <a href="/login" className="w-full py-2.5 flex px-4 rounded hover:bg-gray-700 hover:text-white text-gray-100 text-2xl items-center">
+          <Link to="/login" className="w-full py-2.5 flex px-4 rounded hover:bg-gray-700 hover:text-white text-gray-100 text-2xl items-center">
             Logs<FaLongArrowAltRight />
-          </a>
+          </Link>
         </nav>
       </div>
     </>
